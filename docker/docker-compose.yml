@@ -1,0 +1,11 @@
+version: "3"
+services:
+  pkg-exporter:
+    image: margau/pkg-exporter:latest
+    container_name: pkg-exporter
+    environment:
+      SCHEDULE: "* * * * *"
+    volumes:
+      - ./data/pkg-exporter.prom:/var/prometheus/pkg-exporter.prom
+    init: true
+    restart: unless-stopped
